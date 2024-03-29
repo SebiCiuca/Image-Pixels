@@ -1,15 +1,115 @@
-﻿<reactiveui:ReactiveWindow   
-        x:Class="ReactveUI_WPF_StartPoint.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ReactveUI_WPF_StartPoint"
-        x:TypeArguments="local:MainWindowViewModel"
-        xmlns:reactiveui="http://reactiveui.net"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+﻿<reactiveui:ReactiveWindow x:Class="ReactveUI_WPF_StartPoint.MainWindow"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:local="clr-namespace:ReactveUI_WPF_StartPoint"
+                           x:TypeArguments="local:MainWindowViewModel"
+                           xmlns:reactiveui="http://reactiveui.net"
+                           mc:Ignorable="d"
+                           Title="MainWindow"
+                           Height="251"
+                           Width="451">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="200" />
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="RenderGrid"
+              Grid.Column="0"
+              ClipToBounds="False"
+              Background="Purple">
+            <Border BorderBrush="Red"
+                    BorderThickness="0.1">
+                <Image x:Name="RenderingImage"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Stretch="None"
+                       ClipToBounds="True"
+                       Panel.ZIndex="1"></Image>
+            </Border>
+            <Border BorderBrush="Green"
+                    BorderThickness="0.1">
+                <Grid x:Name="DrawingGrid"
+                      Width="{Binding ActualWidth, ElementName=RenderingImage}"
+                      Panel.ZIndex="100">
+                    <Grid.Background>
+                        <SolidColorBrush Color="Transparent"
+                                         Opacity=".11" />
+                    </Grid.Background>
+                    <Canvas Grid.Row="0"
+                            x:Name="ImageDrawingCanvas"
+                            ClipToBounds="False"
+                            SnapsToDevicePixels="True"
+                            VerticalAlignment="Top"
+                            Width="{Binding ActualWidth, ElementName=RenderingImage}"
+                            MaxWidth="{Binding ActualWidth, ElementName=RenderingImage}"
+                            Panel.ZIndex="10">
+                        <Canvas.Background>
+                            <SolidColorBrush Color="Transparent"
+                                             Opacity="0.4" />
+                        </Canvas.Background>
+                    </Canvas>
+                </Grid>
+            </Border>
+        </Grid>
+        <StackPanel Grid.Column="1">
+            <TextBlock>
+                <Run Text="Position Grid on Grid" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MousePositionGridOnGridX" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MousePositionGridOnGridY" /></TextBlock>
+            <TextBlock>
+                <Run Text="Position Image on Grid" /></TextBlock>
+            <TextBlock> 
+                <Run x:Name="MousePositionImageOnGridX" /></TextBlock>
+            <TextBlock>  
+                <Run x:Name="MousePositionImageOnGridY" /></TextBlock>
+            <TextBlock>
+                <Run Text="=======================" /></TextBlock>
+            <TextBlock>
+                <Run Text="Position Image on Image" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MousePositionImageOnImageX" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MousePositionImageOnImageY" /></TextBlock>
+            <TextBlock>
+                <Run Text="Position Grid on Image" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MousePositionGridOnImageX" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MousePositionGridOnImageY" /></TextBlock>
+            <TextBlock>
+                <Run Text="=======================" /></TextBlock>
+            <TextBlock>
+                <Run Text="On Demand Position" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MousePositionOnDemandX" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MousePositionOnDemandY" /></TextBlock>
+            <TextBlock>
+                <Run Text="=======================" /></TextBlock>
+            <TextBlock>
+                <Run Text="Mouse Enter Position" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MouseEnterPositionX" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MouseEnterPositionY" /></TextBlock>
+            <TextBlock>
+                <Run Text="=======================" /></TextBlock>
+            <TextBlock>
+                <Run Text="Mouse Leave Position" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MouseLeavePositionX" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="MouseLeavePositionY" /></TextBlock>
+            <TextBlock>
+                <Run Text="=======================" /></TextBlock>
+            <TextBlock>
+                <Run Text="CurrentZoom" /></TextBlock>
+            <TextBlock>
+                <Run x:Name="CurrentZoom" /></TextBlock>
+        </StackPanel>
     </Grid>
 </reactiveui:ReactiveWindow>
