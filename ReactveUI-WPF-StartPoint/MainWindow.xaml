@@ -19,39 +19,34 @@
               Grid.Column="0"
               ClipToBounds="False"
               Background="Purple">
-            <Border BorderBrush="Red"
-                    BorderThickness="0.1">
-                <Image x:Name="RenderingImage"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Top"
-                       Stretch="None"
-                       ClipToBounds="True"
-                       Panel.ZIndex="1"></Image>
-            </Border>
-            <Border BorderBrush="Green"
-                    BorderThickness="0.1">
-                <Grid x:Name="DrawingGrid"
-                      Width="{Binding ActualWidth, ElementName=RenderingImage}"
-                      Panel.ZIndex="100">
-                    <Grid.Background>
+            <Image x:Name="RenderingImage"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Stretch="None"
+                   ClipToBounds="True"
+                   Panel.ZIndex="101"></Image>
+            <Grid x:Name="DrawingGrid"
+                  Width="{Binding ActualWidth, ElementName=RenderingImage}"
+                  HorizontalAlignment="Left"
+                  Panel.ZIndex="100">
+                <Grid.Background>
+                    <SolidColorBrush Color="Transparent"
+                                     Opacity=".11" />
+                </Grid.Background>
+                <Canvas Grid.Row="0"
+                        x:Name="ImageDrawingCanvas"
+                        ClipToBounds="False"
+                        SnapsToDevicePixels="True"
+                        VerticalAlignment="Top"
+                        Width="{Binding ActualWidth, ElementName=RenderingImage}"
+                        MaxWidth="{Binding ActualWidth, ElementName=RenderingImage}"
+                        Panel.ZIndex="10">
+                    <Canvas.Background>
                         <SolidColorBrush Color="Transparent"
-                                         Opacity=".11" />
-                    </Grid.Background>
-                    <Canvas Grid.Row="0"
-                            x:Name="ImageDrawingCanvas"
-                            ClipToBounds="False"
-                            SnapsToDevicePixels="True"
-                            VerticalAlignment="Top"
-                            Width="{Binding ActualWidth, ElementName=RenderingImage}"
-                            MaxWidth="{Binding ActualWidth, ElementName=RenderingImage}"
-                            Panel.ZIndex="10">
-                        <Canvas.Background>
-                            <SolidColorBrush Color="Transparent"
-                                             Opacity="0.4" />
-                        </Canvas.Background>
-                    </Canvas>
-                </Grid>
-            </Border>
+                                         Opacity="0.4" />
+                    </Canvas.Background>
+                </Canvas>
+            </Grid>
         </Grid>
         <StackPanel Grid.Column="1">
             <TextBlock>
